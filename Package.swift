@@ -1,27 +1,30 @@
-// swift-tools-version:5.9
+// swift-tools-version: 5.9
 import PackageDescription
 
 let package = Package(
-    name: "DataLibrary",
+    name: "desafio3",
     platforms: [
         .iOS(.v17)
+    ],
+    products: [
+        .library(
+            name: "desafio3",
+            targets: ["desafio3"])
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.8.1")
     ],
     targets: [
         .target(
-            name: "DataLibrary",
-            dependencies: ["Alamofire"],
-            path: "Sources/DataLibrary",
-            resources: [
-                .process("Resources/Assets.xcassets")
-            ]
+            name: "desafio3",
+            dependencies: [.product(name: "Alamofire", package: "Alamofire")],
+            path: "desafio3",
+            exclude: ["Info.plist"]
         ),
         .testTarget(
-            name: "DataLibraryTests",
-            dependencies: ["DataLibrary"],
-            path: "Tests/DataLibraryTests"
+            name: "desafio3Tests",
+            dependencies: ["desafio3"],
+            path: "desafio3Tests"
         )
     ]
 ) 
